@@ -42,17 +42,27 @@ public class Creature {
     }
 
     public void play() {
+        if (happiness > 15) {
+            System.out.println("I'm done playing now!");
+        }
+
+        else {
             fullness -= 4;
             happiness += 8;
             energy -= 6;
 
             System.out.println("that was fun lets do it again!");
+        }
 
-            if (happiness > 15) { }
     }
 
     public String checkStatus() {
         String status = "";
+
+        if (happiness <= 0 || energy <= 0 || fullness <= 0) {
+            System.out.println("Oh no! " + this.getName() + " has died. You're a terrible owner!");
+            System.exit( status: 0);
+        }
 
         if (happiness <= 6 ) {
             status += "OH, " + this.getName() + " is feeling sad!\n";
@@ -65,6 +75,8 @@ public class Creature {
         if (fullness <= 6) {
             status += "Woops, " + this.getName() + " is super hungry!\n";
         }
+
+
 
         return status;
     }
